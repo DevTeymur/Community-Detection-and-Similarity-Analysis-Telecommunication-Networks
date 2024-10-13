@@ -1,6 +1,6 @@
 from data_create import generate_synthetic_call_data
 
-num_clients = 700
+num_clients = 5000
 call_frequency = 5
 call_duration_range = (5, 500)
 time_range = ('2401010000', '2412312359')
@@ -16,6 +16,6 @@ call_data = generate_synthetic_call_data(
 
 from find_similar_comms import find_communities
 
-comms = find_communities(call_data, method='bfs')
+comms = find_communities(call_data, method='dfs')
 print(comms)
 print(f'{len(comms)} communities found.')
