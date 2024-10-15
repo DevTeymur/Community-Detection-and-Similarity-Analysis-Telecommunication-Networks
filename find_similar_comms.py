@@ -1,7 +1,6 @@
 import pandas as pd
 from collections import defaultdict
 
-
 def dfs_recursive(client, community, visited, graph):
     visited.add(client)
     community.append(int(client))
@@ -20,7 +19,6 @@ def dfs(client, community, visited, graph):
             if neighbor not in visited:
                 visited.add(neighbor)
                 stack.append(neighbor)
-
 
 
 def bfs(client, community, visited, graph):
@@ -44,7 +42,6 @@ def find_communities(call_data, method='dfs'):
         graph[c1].add(c2)
         graph[c2].add(c1)  # Ensure bidirectional connection
 
-    # Step 2: Find connected components using DFS or BFS
     visited = set()
     communities = []
 
@@ -55,10 +52,3 @@ def find_communities(call_data, method='dfs'):
             communities.append(community)
 
     return communities
-
-if __name__ == '__main__':
-    test = pd.read_csv('data/test1.csv')
-    communities = find_communities(test.values, method='dfs')
-
-    print(communities)
-    print(f'{len(communities)} communities found.')

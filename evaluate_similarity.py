@@ -1,12 +1,13 @@
 import numpy as np
 
-def calculate_community_metrics(community, call_data):
+def calculate_community_metrics(community, 
+                                call_data,
+                                logs = False
+                                ):
     community_clients = set(community)
     
     community_calls = [call for call in call_data if call[0] in community_clients and call[1] in community_clients]
     num_calls = len(community_calls)
-    
-    # Calculate number of clients in the community
     num_clients = len(community)
     
     # Calculate mean and standard deviation of call durations
@@ -14,6 +15,13 @@ def calculate_community_metrics(community, call_data):
     mean_duration = np.mean(durations) if durations else 0
     std_duration = np.std(durations) if durations else 0
 
+    print("_____"*10)
+    print(f"Community: {community}")
+    print(f"Number of Calls: {num_calls}")
+    print(f"Number of Clients: {num_clients}")
+    print(f"Mean Call Duration: {mean_duration}")
+    print(f"Std Dev of Call Duration: {std_duration}")
+    print("_____"*10)
     return {
         'num_calls': num_calls,
         'num_clients': num_clients,
