@@ -65,7 +65,7 @@ generate_synthetic_call_data(
 )
 
 
-from find_similar_comms import find_communities
+from create_comms_list import find_communities
 import pandas as pd
 df = pd.read_csv(output_file)
 communities = find_communities(df.values, method='dfs')
